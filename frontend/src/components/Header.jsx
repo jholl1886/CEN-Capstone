@@ -1,5 +1,5 @@
 import { Navbar, Nav, Container } from 'react-bootstrap';
-import { FaUser } from 'react-icons/fa';
+import { FaUser, FaSearch } from 'react-icons/fa';
 
 const Header = () => {
   return (
@@ -10,7 +10,8 @@ const Header = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className= "ms-auto">
-                    <Nav.Link href="/login"><FaUser /> Sign In</Nav.Link>   
+                    <Nav.Link href="/login"><FaUser /> Sign In</Nav.Link> 
+                    <Nav.Link href = "/search"><FaSearch /> Search </Nav.Link>  
                     </Nav>
                 </Navbar.Collapse>
             </Container>
