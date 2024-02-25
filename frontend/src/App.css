@@ -7,3 +7,22 @@
     color: #ed0c0c;  /* Change to your desired text color */
     font-family: 'Comic Sans MS', cursive;  /* Change to your desired font family */
   }
+  .interactiveButton {
+    background-color: #4caf50; /* Green background color */
+    color: rgb(213, 11, 11); /* White text color */
+    padding: 10px 20px; /* Padding for better styling */
+    border: none; /* No border */
+    text-align: center; /* Center text */
+    text-decoration: none; /* No underline */
+    display: inline-block; /* Make it an inline element */
+    font-size: 16px; /* Set font size */
+    cursor: pointer; /* Add a pointer cursor on hover */
+    border-radius: 5px; /* Add rounded corners */
+    margin-left: 20px;
+  }
+  
+  .interactiveButton:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+
+  
