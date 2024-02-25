@@ -10,7 +10,7 @@ const App = () => {
     <main className ="py-3">
       <Container>
     <h1>Welcome to JukeBoxd</h1>
-    <p>JukeBoxd is currently a work in progress created by CEN capstone students</p>
+    <p classname="bodyText">JukeBoxd is currently a work in progress created by CEN capstone students</p>
         </Container>
       </main>
     </>
