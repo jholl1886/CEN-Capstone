@@ -12,6 +12,7 @@ const App = () => {
     <h1>Welcome to JukeBoxd</h1>
     <p className="bodyText">JukeBoxd is currently a work in progress created by CEN capstone students</p>
 
+    <img src="Images/tswift album.jpeg" alt ="tswift" width="200" height="200"/>
         </Container>
       </main>
     </>
