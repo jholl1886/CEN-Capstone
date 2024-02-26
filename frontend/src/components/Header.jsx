@@ -1,4 +1,4 @@
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container,Form, FormControl, Button  } from 'react-bootstrap';
 import { FaUser, FaSearch } from 'react-icons/fa';
 
 const Header = () => {
@@ -11,7 +11,14 @@ const Header = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className= "ms-auto">
                     <Nav.Link href="/login"><FaUser /> Sign In</Nav.Link> 
-                    <Nav.Link href = "/search"><FaSearch /> Search </Nav.Link>  
+                    <Form className="d-flex">
+                            <FormControl
+                                type="text"
+                                placeholder="Search"
+                                className="mr-2"
+                            />
+                            <Button variant="outline-light"><FaSearch /></Button>
+                        </Form>  
                     </Nav>
                 </Navbar.Collapse>
             </Container>
