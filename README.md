@@ -10,3 +10,4 @@ Depending on API fetching
 =======
 command for website: npm i react-bootstrap bootstrap react-icons  
 >>>>>>> origin/main
+
