@@ -1,5 +1,8 @@
 import React from 'react'
 import Header from './components/Header';
+import BlogScreen from './screens/BlogScreen';
+import { Outlet } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Container, InputGroup, FormControl, Button, Row, Card, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css' ;
 import {useState, useEffect} from 'react';
@@ -52,58 +55,66 @@ async function search(){
   //Display
 }
   console.log(albums);
+
+  
   return (
     <>
-    <Header />
-    <main className ="py-3">
-      <Container>
-        
-    <h1>Welcome to JukeBoxd</h1>
-    <InputGroup className="mb-3" size="lg">
-      <FormControl
-      placeholder="Artist Search"
-      type = "input"
-      onKeyDown={event =>{
-        if (event.key == "Enter") {
-          search();
-        }
-      }
-      }
-      onChange={event => setSearchInput(event.target.value)}
-      />
-      <Button onClick={search}>
-        Search
-      </Button>
-      <Container>
-        <Row className="mx-2 row row-cols-4">
-          {albums.map((album, i) => {
-            console.log(album);
-            return (
-              <Card>
-            <Card.Img src={album.images[0].url}/>
-            <Card.Body>
-              <Card.Title>
-                {album.name} 
-              </Card.Title>
-            </Card.Body>
-          </Card>
-            )
-          })}
-        
+        <Header />
+        <main className ="py-3">
+          <Container>
+            
+        <h1>Welcome to JukeBoxd</h1>
+        <InputGroup className="mb-3" size="lg">
+          <FormControl
+          placeholder="Artist Search"
+          type = "input"
+          onKeyDown={event =>{
+            if (event.key == "Enter") {
+              search();
+            }
+          }
+          }
+          onChange={event => setSearchInput(event.target.value)}
+          />
+          <Button onClick={search}>
+            Search
+          </Button>
+          <Container>
+            <Row className="mx-2 row row-cols-4">
+              {albums.map((album, i) => {
+                console.log(album);
+                return (
+                  <Card>
+                <Card.Img src={album.images[0].url}/>
+                <Card.Body>
+                  <Card.Title>
+                    {album.name} 
+                  </Card.Title>
+                </Card.Body>
+              </Card>
+                )
+              })}
+            
+              
+            </Row>
+            
+              
+            </Container>
+            </InputGroup>
+        <p className="bodyText"> JukeBoxd is currently a work in progress created by CEN Capstone students Aditi, Jacob, Josiah, Krenn, and Reece. Database and spotify integration to be added this increment.</p>
+        <img src="Images/tswift reputation.jpeg" alt ="tswift" width="300" height="300"/>
+
           
-        </Row>
-          
-        </Container>
-        </InputGroup>
-    <p className="bodyText"> JukeBoxd is currently a work in progress created by CEN Capstone students Aditi, Jacob, Josiah, Krenn, and Reece. Database and spotify integration to be added this increment.</p>
-    <img src="Images/tswift reputation.jpeg" alt ="tswift" width="300" height="300"/>
-    
-      
-    
-        </Container>
         
-      </main>
-    </>
+            </Container>
+            
+          </main>
+
+          {/* FIGURE THIS OUT */}        
+          <Routes>
+          <Route path="/blogs/*" element={<BlogScreen />} />  
+          </Routes>
+      </>
   )
 }
 

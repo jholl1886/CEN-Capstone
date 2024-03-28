@@ -1,0 +1,15 @@
+{
+  "name": "cen-capstone",
+  "version": "1.0.0",
+  "description": "JukeBoxd: Where you can review and talk about music",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js"
+  },
+  "author": "Krenn Intharaksa",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
