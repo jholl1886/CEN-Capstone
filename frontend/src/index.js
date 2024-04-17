@@ -13,15 +13,19 @@ import reportWebVitals from './reportWebVitals';
 import BlogScreen from './screens/BlogScreen';
 import PostScreen from './screens/PostScreen';
 import HomeScreen from './screens/HomeScreen';
+import AlbumCard from './AlbumCard';
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<App />}>
-      <Route path='blogs' element={<BlogScreen />} />
-      <Route path='blogs/:id' element={<PostScreen />} />
-    </Route>
-  )
-)
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+    children: [
+      { path: 'blogs', element: <BlogScreen /> },
+      { path: 'blogs/:id', element: <PostScreen /> },
+      { path: 'album/:albumId', element: <AlbumCard /> }
+    ]
+  }
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

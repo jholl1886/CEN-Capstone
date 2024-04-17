@@ -6,7 +6,10 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Container, InputGroup, FormControl, Button, Row, Card, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css' ;
 import {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 import './App.css';
+import AlbumCard from './AlbumCard';
+
 
 const CLIENT_ID = "9a5a79f145b04c6e9cf87f424ab98ea0"; //Reece Spotify
 const CLIENT_SECRET = "ebe731932e5d41d59af1943768b2b4a7"; //Reece Spotify
@@ -84,6 +87,7 @@ async function search(){
               {albums.map((album, i) => {
                 console.log(album);
                 return (
+                  <Link to={`/album/${album.id}`} key={album.id} style={{ textDecoration: 'none', color: 'inherit' }}>
                   <Card>
                 <Card.Img src={album.images[0].url}/>
                 <Card.Body>
@@ -92,6 +96,7 @@ async function search(){
                   </Card.Title>
                 </Card.Body>
               </Card>
+              </Link>
                 )
               })}
             
@@ -109,10 +114,11 @@ async function search(){
             </Container>
             
           </main>
-
           {/* FIGURE THIS OUT */}        
+          <Outlet/>
           <Routes>
           <Route path="/blogs/*" element={<BlogScreen />} />  
+          <Route path="/album/:albumId" element={<AlbumCard accessToken={accessToken} />} />
           </Routes>
       </>
   )
