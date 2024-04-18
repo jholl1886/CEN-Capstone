@@ -8,6 +8,7 @@ import { Container, InputGroup, FormControl, Button, Row, Card, Form } from 'rea
 import 'bootstrap/dist/css/bootstrap.min.css' ;
 import {useState, useEffect} from 'react';
 import './App.css';
+import { blogs as initialBlogs } from './blogs.js';
 
 const CLIENT_ID = "9a5a79f145b04c6e9cf87f424ab98ea0"; //Reece Spotify
 const CLIENT_SECRET = "ebe731932e5d41d59af1943768b2b4a7"; //Reece Spotify
