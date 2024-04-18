@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from './components/Header';
 import BlogScreen from './screens/BlogScreen';
+import PostScreen from './screens/PostScreen';
 import { Outlet } from 'react-router-dom';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Container, InputGroup, FormControl, Button, Row, Card, Form } from 'react-bootstrap';
@@ -15,6 +16,7 @@ const App = () => {
   const [searchInput, setSearchInput] = useState("");
   const [accessToken, setAccessToken] = useState("");
   const [albums, setAlbums] = useState([]);
+  const [showAlbums, setShowAlbums] = useState(false); // State to control the visibility of albums
 
 useEffect(() => {                                         //Connect to api once
 var authParameters = {
@@ -30,6 +32,9 @@ fetch('https://accounts.spotify.com/api/token', authParameters)
 }, [])
 
 async function search(){
+  if(!searchInput.trim()){
+    return;
+  }
   console.log("Search for " + searchInput);
   //Get request using search to get Artist ID
   var searchParameters = {
@@ -51,8 +56,17 @@ async function search(){
     .then(data => {
       console.log(data);
       setAlbums(data.items);
+      setShowAlbums(true); // Show the albums list after fetching
     })
+    
+
+
   //Display
+}
+function clearSearch() {
+  setSearchInput("");
+  setAlbums([]);
+  setShowAlbums(false); // Hide the albums list
 }
   console.log(albums);
 
@@ -68,8 +82,9 @@ async function search(){
           <FormControl
           placeholder="Artist Search"
           type = "input"
+          value={searchInput}
           onKeyDown={event =>{
-            if (event.key == "Enter") {
+            if (event.key === "Enter") {
               search();
             }
           }
@@ -79,6 +94,7 @@ async function search(){
           <Button onClick={search}>
             Search
           </Button>
+          <Button variant="secondary" onClick={clearSearch}>Clear</Button>
           <Container>
             <Row className="mx-2 row row-cols-4">
               {albums.map((album, i) => {
@@ -112,7 +128,8 @@ async function search(){
 
           {/* FIGURE THIS OUT */}        
           <Routes>
-          <Route path="/blogs/*" element={<BlogScreen />} />  
+          <Route path="/blogs/*" element={<BlogScreen />} /> 
+          <Route path='blogs/:id' element={<PostScreen />} />
           </Routes>
       </>
   )
