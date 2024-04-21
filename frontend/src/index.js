@@ -14,6 +14,7 @@ import BlogScreen from './screens/BlogScreen';
 import PostScreen from './screens/PostScreen';
 import LoginScreen from './screens/LoginScreen';
 import HomeScreen from './screens/HomeScreen';
+import AlbumCard from './screens/ReviewScreen';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,6 +25,7 @@ const router = createBrowserRouter(
       <Route path='blogs/:id' element={<PostScreen />} />
       <Route path='/login' element={<LoginScreen />} />
       <Route path="/blogs/*" element={<BlogScreen />} /> 
+      <Route path="/album/:albumId" element={<AlbumCard />} />
 
     </Route>
   )
