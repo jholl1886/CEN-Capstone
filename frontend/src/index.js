@@ -23,6 +23,8 @@ const router = createBrowserRouter(
       <Route index={true} path='/' element={<HomeScreen />} />      <Route path='blogs' element={<BlogScreen />} />
       <Route path='blogs/:id' element={<PostScreen />} />
       <Route path='/login' element={<LoginScreen />} />
+      <Route path="/blogs/*" element={<BlogScreen />} /> 
+
     </Route>
   )
 )
