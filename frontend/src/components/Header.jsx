@@ -1,4 +1,4 @@
-import { Navbar, Nav, Container,Form, FormControl, Button, NavLink  } from 'react-bootstrap';
+import { Navbar, Nav, Container,Form, FormControl, Button  } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { LinkContainer} from 'react-router-bootstrap'
 import { FaUser, FaSearch } from 'react-icons/fa';
@@ -22,11 +22,16 @@ const Header = () => {
                   <IoMdPaper /> Blogs
                 </Nav.Link>
               </LinkContainer>
-              <LinkContainer to='/login'>
+              
+              {/* <LinkContainer to='/login'>
                 <Nav.Link>
                   <FaUser /> Sign In
                 </Nav.Link>
-              </LinkContainer>
+              </LinkContainer> */}
+            < Nav.Link href= "/login"> <FaUser /> Sign In </Nav.Link>
+
+
+
               <Form className="d-flex">
                 <FormControl
                   type="text"
