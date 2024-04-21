@@ -12,6 +12,9 @@ const AlbumCard = () => {
   const [albumDetails, setAlbumDetails] = useState(null);
   const [review, setReview] = useState("");
 
+  //for some reason could not get accesstoken to work and be used between searches
+  //so i just made it request a new accesstoken every time (not optimal probably) -Reece
+  
   const fetchAccessToken = async () => {
     const authParameters = {
       method: 'POST',
