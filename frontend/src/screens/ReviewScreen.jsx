@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Card, Form, Button } from 'react-bootstrap';
-
+import StarRating from "../StarRating"; //Jacob
+import "../App.css"; //jacob
 const CLIENT_ID = "9a5a79f145b04c6e9cf87f424ab98ea0"; //Reece Spotify
 const CLIENT_SECRET = "ebe731932e5d41d59af1943768b2b4a7"; //Reece Spotify
 
@@ -57,6 +58,11 @@ const AlbumCard = () => {
             <Card.Body>
               <Card.Title>{albumDetails.name}</Card.Title>
               <Card.Text>{albumDetails.artists[0].name}</Card.Text>
+              <div>
+                <span style={{ display: 'flex', alignItems: 'center', marginRight: '10px' }}>
+                  Your rating: <StarRating />
+                </span>
+              </div>
             </Card.Body>
           </Card>
           <Form>
