@@ -48,6 +48,11 @@ const HomeScreen = () => {
       });
   }
 
+  function clearSearch() {
+    setSearchInput("");
+    setAlbums([]);
+  }
+
   return (
     <>
       <main className="py-3">
@@ -65,6 +70,7 @@ const HomeScreen = () => {
               onChange={event => setSearchInput(event.target.value)}
             />
             <Button onClick={search}>Search</Button>
+            <Button variant="secondary" onClick={clearSearch}>Clear</Button>
           </InputGroup>
           <Container>
             <Row className="mx-2 row row-cols-4">
