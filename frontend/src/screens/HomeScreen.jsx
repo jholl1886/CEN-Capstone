@@ -62,6 +62,7 @@ const HomeScreen = () => {
             <FormControl
               placeholder="Artist Search"
               type="input"
+              value={searchInput}
               onKeyDown={event => {
                 if (event.key === "Enter") {
                   search();

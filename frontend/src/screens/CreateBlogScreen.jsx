@@ -24,7 +24,7 @@ const CreateBlogScreen = ({ addBlog }) => {
     };
 
     // Add the new blog to the list of blogs
-    addBlog(newBlog);
+    //addBlog(newBlog);
 
 
 
