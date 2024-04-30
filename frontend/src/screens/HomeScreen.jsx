@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Container, InputGroup, FormControl, Button, Row, Card } from 'react-bootstrap';
-import { Outlet } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 
 const CLIENT_ID = "9a5a79f145b04c6e9cf87f424ab98ea0"; //Reece Spotify
 const CLIENT_SECRET = "ebe731932e5d41d59af1943768b2b4a7"; //Reece Spotify
@@ -23,6 +23,7 @@ const HomeScreen = () => {
     fetch('https://accounts.spotify.com/api/token', authParameters)
       .then(result => result.json())
       .then(data => setAccessToken(data.access_token))
+      console.log(accessToken);
   }, []);
 
   async function search() {
@@ -47,6 +48,11 @@ const HomeScreen = () => {
       });
   }
 
+  function clearSearch() {
+    setSearchInput("");
+    setAlbums([]);
+  }
+
   return (
     <>
       <main className="py-3">
@@ -56,6 +62,7 @@ const HomeScreen = () => {
             <FormControl
               placeholder="Artist Search"
               type="input"
+              value={searchInput}
               onKeyDown={event => {
                 if (event.key === "Enter") {
                   search();
@@ -64,12 +71,14 @@ const HomeScreen = () => {
               onChange={event => setSearchInput(event.target.value)}
             />
             <Button onClick={search}>Search</Button>
+            <Button variant="secondary" onClick={clearSearch}>Clear</Button>
           </InputGroup>
           <Container>
             <Row className="mx-2 row row-cols-4">
               {albums.map((album, i) => {
                 console.log(album);
                 return (
+                  <Link to={`/album/${album.id}`} key={album.id} style={{ textDecoration: 'none', color: 'inherit' }}>
                   <Card key={i}>
                     <Card.Img src={album.images[0].url} />
                     <Card.Body>
@@ -78,12 +87,12 @@ const HomeScreen = () => {
                       </Card.Title>
                     </Card.Body>
                   </Card>
+                  </Link>
                 )
               })}
             </Row>
           </Container>
-          <p className="bodyText"> JukeBoxd is currently a work in progress created by CEN Capstone students Aditi, Jacob, Josiah, Krenn, and Reece. Database and Spotify integration to be added this increment.</p>
-          <img src="Images/tswift reputation.jpeg" alt="tswift" width="300" height="300" />
+          <p className="bodyText"> JukeBoxd is created by CEN Capstone students Aditi, Jacob, Josiah, Krenn, and Reece. </p>
         </Container>
       </main>
       <Outlet />
