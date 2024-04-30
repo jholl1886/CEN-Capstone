@@ -10,7 +10,7 @@ const baseQuery = fetchBaseQuery({
 async function baseQueryWithAuth(args, api, extra) {
   const result = await baseQuery(args, api, extra);
   if (result.error && result.error.status === 401) {
-    // api.dispatch(logout());
+    api.dispatch(logout());
   }
   return result;
 }

@@ -3,19 +3,19 @@ import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { FaUser } from 'react-icons/fa';
 import { IoMdPaper } from 'react-icons/io';
-import { useSelector, useDispatch } from 'react-redux'; // Import useSelector
+import { useSelector, useDispatch } from 'react-redux';
 import { useLogoutMutation } from '../slices/usersApiSlice';
 import { logout } from '../slices/authSlice';
 import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
-  const userInfo = useSelector((state) => state.auth.userInfo);
+  const { userInfo } = useSelector((state) => state.auth);
 
-  // Define logoutHandler function if not already defined
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [logoutApiCall] = useLogoutMutation();
+
   const logoutHandler = async () => {
     try {
       await logoutApiCall().unwrap();
@@ -25,7 +25,6 @@ const Header = () => {
       console.error(err);
     }
   };
-  
 
   return (
     <header>
