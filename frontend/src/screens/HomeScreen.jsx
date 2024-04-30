@@ -78,9 +78,9 @@ const HomeScreen = () => {
               {albums.map((album, i) => {
                 console.log(album);
                 return (
-                  <Link to={`/album/${album.id}`} key={album.id} style={{ textDecoration: 'none', color: 'inherit' }}>
+                  <Link to={`/album/${album.id}`} key={album.id} >
                   <Card key={i}>
-                    <Card.Img src={album.images[0].url} />
+                    <Card.Img src={album.images[0].url}  />
                     <Card.Body>
                       <Card.Title>
                         {album.name}

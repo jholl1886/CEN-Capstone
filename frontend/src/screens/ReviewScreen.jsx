@@ -54,7 +54,7 @@ const AlbumCard = () => {
       {albumDetails && (
         <>
           <Card>
-            <Card.Img variant="middle" src={albumDetails.images[0].url} style={{width: '750px', height: '750px'}} />
+            <Card.Img variant="middle" src={albumDetails.images[0].url} style={{width: '500px', height: '500px', marginLeft: 'auto', marginRight: 'auto', marginBottom:'auto', marginTop: 'auto', border: '5px solid #222529'}} />
             <Card.Body>
               <Card.Title>{albumDetails.name}</Card.Title>
               <Card.Text>{albumDetails.artists[0].name}</Card.Text>
