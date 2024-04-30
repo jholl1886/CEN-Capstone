@@ -1,18 +1,31 @@
-import { Navbar, Nav, Container, Form, FormControl, Button, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
-import { FaUser, FaSearch } from 'react-icons/fa';
+import { FaUser } from 'react-icons/fa';
 import { IoMdPaper } from 'react-icons/io';
-import { useSelector } from 'react-redux'; // Import useSelector
+import { useSelector, useDispatch } from 'react-redux'; // Import useSelector
+import { useLogoutMutation } from '../slices/usersApiSlice';
+import { logout } from '../slices/authSlice';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
-  const userInfo = useSelector((state) => state.auth.userInfo); // Get userInfo from Redux store
+  const userInfo = useSelector((state) => state.auth.userInfo);
 
   // Define logoutHandler function if not already defined
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const logoutHandler = () => {
-    // Your logout logic here
+  const [logoutApiCall] = useLogoutMutation();
+  const logoutHandler = async () => {
+    try {
+      await logoutApiCall().unwrap();
+      dispatch(logout());
+      navigate('/login');
+    } catch (err) {
+      console.error(err);
+    }
   };
+  
 
   return (
     <header>
@@ -49,20 +62,12 @@ const Header = () => {
                 </LinkContainer>
               )}
 
-              <Form className="d-flex">
-                <FormControl
-                  type="text"
-                  placeholder="Search"
-                  className="mr-2"
-                />
-                <Button variant="outline-light"><FaSearch /></Button>
-              </Form>
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
     </header>
   );
-}
+};
 
 export default Header;
