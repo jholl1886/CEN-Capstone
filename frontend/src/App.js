@@ -126,16 +126,8 @@ import { Container } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
-
-//           {/* FIGURE THIS OUT */}        
-//           <Routes>
-//           <Route path="/blogs/*" element={<BlogScreen />} /> 
-//           <Route path='blogs/:id' element={<PostScreen />} />
-//           </Routes>
-//       </>
-//   )
-// }
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
 return (
@@ -148,6 +140,7 @@ return (
       </Container>
     </main>
     <Footer />
+    <ToastContainer />  
   </>
 );
 };
