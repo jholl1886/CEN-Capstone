@@ -32,7 +32,7 @@ const CreateBlogScreen = ({ addBlog }) => {
 
   return (
     <>
-      <Link className="btn btn-light my-3" to="/">
+      <Link className="btn btn-light my-3" to="/blogs">
         Go Back
       </Link>
 

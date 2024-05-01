@@ -15,7 +15,6 @@ import PostScreen from './screens/PostScreen';
 import LoginScreen from './screens/LoginScreen';
 import HomeScreen from './screens/HomeScreen';
 import AlbumCard from './screens/ReviewScreen';
-import store from './store';
 import CreateBlogScreen from './screens/CreateBlogScreen';
 import { Provider } from 'react-redux';
 import RegisterScreen from './screens/RegisterScreen';
@@ -40,11 +39,8 @@ const router = createBrowserRouter(
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-     <Provider store={store}>
-      <RouterProvider router={router} />
-     </Provider>  
+    <RouterProvider router={router} />
   </React.StrictMode>
-
 );
 
 
