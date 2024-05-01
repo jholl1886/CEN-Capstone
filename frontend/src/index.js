@@ -16,6 +16,8 @@ import LoginScreen from './screens/LoginScreen';
 import HomeScreen from './screens/HomeScreen';
 import AlbumCard from './screens/ReviewScreen';
 import CreateBlogScreen from './screens/CreateBlogScreen';
+import { Provider } from 'react-redux';
+import RegisterScreen from './screens/RegisterScreen';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,6 +30,7 @@ const router = createBrowserRouter(
       <Route path="/blogs/*" element={<BlogScreen />} /> 
       <Route path="/album/:albumId" element={<AlbumCard />} />
       <Route path="/createblog" element={<CreateBlogScreen /*addBlog={addBlog}*/ />} />
+      <Route path='/register' element={<RegisterScreen />} />
 
     </Route>
   )
