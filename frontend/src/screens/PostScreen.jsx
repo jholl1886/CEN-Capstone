@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Card, CardBody, CardText, CardTitle, Button, Form } from "react-bootstrap";
 import blogs from "../blogs";
+import { useSelector } from 'react-redux';
 
 const PostScreen = () => {
     const { id: postId } = useParams();
@@ -13,6 +14,8 @@ const PostScreen = () => {
     const blog = blogs.find((p) => p._id === postId);
     const [replies, setReplies] = useState(blog && blog.replies ? blog.replies : []); // Ensure replies is initialized properly
     // const { blogs, setBlogs } = useContext(BlogContext);
+    const { userInfo } = useSelector((state) => state.auth);
+
 
     const handleLike = () => {
         setLikes(likes + 1);
@@ -91,7 +94,8 @@ const PostScreen = () => {
             {replies.map((reply, index) => (
                 <Card key={index}>
                     <CardBody>
-                        <CardText>Username: {reply.username}</CardText>
+                       
+                        <CardText>Username: {userInfo.name}</CardText>
                         <CardText>{reply.content}</CardText>
                         <Button variant="success" onClick={() => handleReplyLike(index)}>Like ({reply.likes})</Button>{' '}
                         <Button variant="danger" onClick={() => handleReplyDislike(index)}>Dislike ({reply.dislikes})</Button>
