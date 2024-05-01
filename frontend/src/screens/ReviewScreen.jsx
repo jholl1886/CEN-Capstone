@@ -54,7 +54,11 @@ const AlbumCard = () => {
       {albumDetails && (
         <>
           <Card>
+          
             <Card.Img variant="middle" src={albumDetails.images[0].url} style={{width: '500px', height: '500px', marginLeft: 'auto', marginRight: 'auto', marginBottom:'auto', marginTop: 'auto', border: '5px solid #222529'}} />
+            <Button style={{backgroundColor: '#222529'}} onClick={() => window.location.href = (`https://open.spotify.com/album/${albumId}`)}>
+              Go to Album 
+            </Button>
             <Card.Body>
               <Card.Title>{albumDetails.name}</Card.Title>
               <Card.Text>{albumDetails.artists[0].name}</Card.Text>
@@ -63,6 +67,7 @@ const AlbumCard = () => {
                   Your rating: <StarRating />
                 </span>
               </div>
+            
             </Card.Body>
           </Card>
           <Form>
@@ -73,6 +78,7 @@ const AlbumCard = () => {
             <Button variant="primary" type="submit">
               Submit Review
             </Button>
+           
           </Form>
         </>
       )}
