@@ -12,6 +12,7 @@ const AlbumCard = () => {
   const [accessToken, setAccessToken] = useState('');
   const [albumDetails, setAlbumDetails] = useState(null);
   const [review, setReview] = useState("");
+  const [reviews, setReviews] = useState([]);
 
   //for some reason could not get accesstoken to work and be used between searches
   //so i just made it request a new accesstoken every time (not optimal probably) -Reece
@@ -49,6 +50,12 @@ const AlbumCard = () => {
     fetchAlbumDetails();
   }, [albumId]); 
 
+  const submitHandler = (e) => {
+    e.preventDefault();
+    setReviews(currentReviews => [...currentReviews, review]);
+    setReview('');
+  };
+
   return (
     <Container>
       {albumDetails && (
@@ -70,7 +77,7 @@ const AlbumCard = () => {
             
             </Card.Body>
           </Card>
-          <Form>
+          <Form onSubmit={submitHandler}>
             <Form.Group className="mb-3">
               <Form.Label>Review</Form.Label>
               <Form.Control as="textarea" rows={3} value={review} onChange={e => setReview(e.target.value)} />
@@ -78,8 +85,13 @@ const AlbumCard = () => {
             <Button variant="primary" type="submit">
               Submit Review
             </Button>
-           
-          </Form>
+           </Form>
+           <div>
+            <h3>Reviews</h3>
+            {reviews.map((singleReview, index) => (
+              <p key={index}>{singleReview}</p>
+            ))}
+          </div>
         </>
       )}
     </Container>
