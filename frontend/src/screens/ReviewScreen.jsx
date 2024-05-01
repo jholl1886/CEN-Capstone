@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { Container, Card, Form, Button } from 'react-bootstrap';
+import {  CardBody, CardText, Container, Form, Button, Card } from 'react-bootstrap';
 import StarRating from "../StarRating"; //Jacob
 import "../App.css"; //jacob
 const CLIENT_ID = "9a5a79f145b04c6e9cf87f424ab98ea0"; //Reece Spotify
 const CLIENT_SECRET = "ebe731932e5d41d59af1943768b2b4a7"; //Reece Spotify
+
 
 
 const AlbumCard = () => {
@@ -13,6 +15,7 @@ const AlbumCard = () => {
   const [albumDetails, setAlbumDetails] = useState(null);
   const [review, setReview] = useState("");
   const [reviews, setReviews] = useState([]);
+  const { userInfo } = useSelector((state) => state.auth);
 
   //for some reason could not get accesstoken to work and be used between searches
   //so i just made it request a new accesstoken every time (not optimal probably) -Reece
@@ -89,7 +92,15 @@ const AlbumCard = () => {
            <div>
             <h3>Reviews</h3>
             {reviews.map((singleReview, index) => (
-              <p key={index}>{singleReview}</p>
+              <Card key={index} className="review-card">
+                <CardBody>
+                  <CardText>Username: {userInfo.name}</CardText>
+                  <CardText>{singleReview}</CardText>
+                  <div>
+                    <StarRating />
+                  </div>
+                </CardBody>
+              </Card>
             ))}
           </div>
         </>
